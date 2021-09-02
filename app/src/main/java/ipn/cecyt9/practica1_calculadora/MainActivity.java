@@ -3,13 +3,11 @@
 package ipn.cecyt9.practica1_calculadora;
 
 import static android.widget.Toast.LENGTH_SHORT;
-
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.os.Bundle;
 import android.widget.Toast;
-import static android.widget.Toast.LENGTH_SHORT;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -103,6 +101,13 @@ public class MainActivity extends AppCompatActivity {
         operador="/";
         onClickOperacionCapturaNumero1(miView);
     }
+    public void onClickElevar(View miView)
+    {
+        operador="^";
+        onClickOperacionCapturaNumero1(miView);
+    }
+
+
     public void onClickIgual(View miView)
     {
         TextView tv = (TextView) findViewById(R.id.textView) ;
@@ -119,6 +124,10 @@ public class MainActivity extends AppCompatActivity {
             } else if (operador.equals("/")) {
                 resultado = numero1 / numero2;
             }
+            else if (operador.equals("^")) {
+                resultado = Math.pow(numero1, numero2);
+            }
+
             tv.setText(resultado.toString());
         }catch(NumberFormatException nfe){
             Toast.makeText(this, "Numero Incorrecto", LENGTH_SHORT).show();
